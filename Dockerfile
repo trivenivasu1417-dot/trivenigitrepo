@@ -1,14 +1,14 @@
-# Use OpenJDK 17
-FROM openjdk:17-jdk-slim
+# Use a valid OpenJDK 17 image
+FROM eclipse-temurin:17-jdk
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
-# Copy the jar built by Maven
+# Copy the built jar file from Maven target
 COPY target/*.jar app.jar
 
-# Expose port 8080
+# Expose default Spring Boot port
 EXPOSE 8080
 
-# Run the application
+# Run the Spring Boot app
 ENTRYPOINT ["java", "-jar", "app.jar"]
